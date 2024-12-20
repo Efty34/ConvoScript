@@ -1,0 +1,9 @@
+gcc -c symbol_table.c
+
+bison -d script.y
+
+flex script.l
+
+gcc lex.yy.c script.tab.c symbol_table.o -o parser
+
+./parser input.txt output.txt

@@ -1,0 +1,10 @@
+master() {
+    number x = 5;
+    number y = 5;
+    number sum = x + y;
+    number diff = x - y;
+    number prod = x * y;
+    number quot = x / y;
+    show(sum);
+    show(diff);
+}

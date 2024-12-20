@@ -1,0 +1,44 @@
+=== Program Analysis Started ===
+
+Declared: number x = 5
+Declared: number y = 5
+Declared: number sum = 10.00
+Declared: number diff = 0.00
+Declared: number prod = 25.00
+Declared: number quot = 1.00
+Show statement: sum = 10.00
+Show statement: diff = 0.00
+
+=== Variable Declaration Summary ===
+Total variables found: 6
+
+Variable #1:
+  Name: x
+  Type: number
+  Value: 5
+
+Variable #2:
+  Name: y
+  Type: number
+  Value: 5
+
+Variable #3:
+  Name: sum
+  Type: number
+  Value: 10.00
+
+Variable #4:
+  Name: diff
+  Type: number
+  Value: 0.00
+
+Variable #5:
+  Name: prod
+  Type: number
+  Value: 25.00
+
+Variable #6:
+  Name: quot
+  Type: number
+  Value: 1.00
+
