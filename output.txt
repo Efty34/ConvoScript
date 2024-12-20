@@ -1,44 +1,95 @@
 === Program Analysis Started ===
 
-Declared: number x = 5
-Declared: number y = 5
-Declared: number sum = 10.00
-Declared: number diff = 0.00
-Declared: number prod = 25.00
-Declared: number quot = 1.00
-Show statement: sum = 10.00
-Show statement: diff = 0.00
+Show statement: sum = 52.20
+Show statement: diff = 32.20
+Show statement: product = 422.00
+Show statement: quotient = 4.22
+Show statement: isGreater = true
+Show statement: complexArith = 104.40
+Show statement: complexCond = true
+Show statement: mixedOp = true
+Show statement: message = "Hello"
 
 === Variable Declaration Summary ===
-Total variables found: 6
+Total variables found: 16
 
 Variable #1:
   Name: x
   Type: number
-  Value: 5
+  Value: 42.2
 
 Variable #2:
   Name: y
   Type: number
-  Value: 5
+  Value: 10
 
 Variable #3:
-  Name: sum
-  Type: number
-  Value: 10.00
+  Name: message
+  Type: string
+  Value: "Hello"
 
 Variable #4:
-  Name: diff
+  Name: sum
   Type: number
-  Value: 0.00
+  Value: 52.20
 
 Variable #5:
-  Name: prod
+  Name: diff
   Type: number
-  Value: 25.00
+  Value: 32.20
 
 Variable #6:
-  Name: quot
+  Name: product
   Type: number
-  Value: 1.00
+  Value: 422.00
+
+Variable #7:
+  Name: quotient
+  Type: number
+  Value: 4.22
+
+Variable #8:
+  Name: isGreater
+  Type: number
+  Value: true
+
+Variable #9:
+  Name: isEqual
+  Type: number
+  Value: false
+
+Variable #10:
+  Name: isNotEqual
+  Type: number
+  Value: true
+
+Variable #11:
+  Name: isLess
+  Type: number
+  Value: false
+
+Variable #12:
+  Name: isGreaterEqual
+  Type: number
+  Value: true
+
+Variable #13:
+  Name: isLessEqual
+  Type: number
+  Value: false
+
+Variable #14:
+  Name: complexArith
+  Type: number
+  Value: 104.40
+
+Variable #15:
+  Name: complexCond
+  Type: number
+  Value: true
+
+Variable #16:
+  Name: mixedOp
+  Type: number
+  Value: true
 

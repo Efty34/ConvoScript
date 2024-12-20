@@ -33,6 +33,29 @@ char* perform_arithmetic(const char* val1, const char* val2, char op) {
     sprintf(result_str, "%.2f", result);
     return result_str;
 }
+
+char* evaluate_condition(const char* val1, const char* val2, char* op) {
+    double num1 = atof(val1);
+    double num2 = atof(val2);
+    char* result = malloc(6); // enough for "true" or "false"
+    
+    if (strcmp(op, ">") == 0) {
+        strcpy(result, num1 > num2 ? "true" : "false");
+    } else if (strcmp(op, "<") == 0) {
+        strcpy(result, num1 < num2 ? "true" : "false");
+    } else if (strcmp(op, ">=") == 0) {
+        strcpy(result, num1 >= num2 ? "true" : "false");
+    } else if (strcmp(op, "<=") == 0) {
+        strcpy(result, num1 <= num2 ? "true" : "false");
+    } else if (strcmp(op, "==") == 0) {
+        strcpy(result, num1 == num2 ? "true" : "false");
+    } else if (strcmp(op, "!=") == 0) {
+        strcpy(result, num1 != num2 ? "true" : "false");
+    }
+    return result;
+}
+
+
 %}
 
 %union {
@@ -43,6 +66,7 @@ char* perform_arithmetic(const char* val1, const char* val2, char op) {
 %token LBRACE RBRACE LPAREN RPAREN SEMICOLON EQUALS
 %token MASTER DATATYPE SHOW INPUT IDENTIFIER STRING NUMBER
 %token PLUS MINUS MULTIPLY DIVIDE
+%token GT LT GE LE EQ NE TRUE FALSE
 
 %left PLUS MINUS
 %left MULTIPLY DIVIDE
@@ -50,6 +74,7 @@ char* perform_arithmetic(const char* val1, const char* val2, char op) {
 %type <strval> IDENTIFIER STRING NUMBER DATATYPE
 %type <strval> variable_declaration show_function input_function
 %type <strval> expr term factor
+%type <strval> conditional_expr bool_expr
 
 %%
 
@@ -102,8 +127,11 @@ variable_declaration:
     {
         var_count++;
         add_symbol(symbolTable, $2, $1, $4);
-        fprintf(outputFile, "Declared: %s %s = %s\n", $1, $2, $4);
-        $$ = $4;
+    }
+    | DATATYPE IDENTIFIER EQUALS bool_expr SEMICOLON
+    {
+        var_count++;
+        add_symbol(symbolTable, $2, $1, $4);
     }
     ;
 
@@ -133,6 +161,20 @@ factor:
         }
     }
     | LPAREN expr RPAREN { $$ = $2; }
+    ;
+
+bool_expr:
+    LPAREN conditional_expr RPAREN { $$ = $2; }
+    | conditional_expr             { $$ = $1; }
+    ;
+
+conditional_expr:
+    expr GT expr   { $$ = evaluate_condition($1, $3, ">"); }
+    | expr LT expr { $$ = evaluate_condition($1, $3, "<"); }
+    | expr GE expr { $$ = evaluate_condition($1, $3, ">="); }
+    | expr LE expr { $$ = evaluate_condition($1, $3, "<="); }
+    | expr EQ expr { $$ = evaluate_condition($1, $3, "=="); }
+    | expr NE expr { $$ = evaluate_condition($1, $3, "!="); }
     ;
 
 show_function:

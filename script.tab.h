@@ -55,7 +55,15 @@
      PLUS = 271,
      MINUS = 272,
      MULTIPLY = 273,
-     DIVIDE = 274
+     DIVIDE = 274,
+     GT = 275,
+     LT = 276,
+     GE = 277,
+     LE = 278,
+     EQ = 279,
+     NE = 280,
+     TRUE = 281,
+     FALSE = 282
    };
 #endif
 
@@ -66,7 +74,7 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 38 "script.y"
+#line 61 "script.y"
 
     char *strval;
     int intval;
@@ -74,7 +82,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 78 "script.tab.h"
+#line 86 "script.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
