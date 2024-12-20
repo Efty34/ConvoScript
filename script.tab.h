@@ -63,7 +63,10 @@
      EQ = 279,
      NE = 280,
      TRUE = 281,
-     FALSE = 282
+     FALSE = 282,
+     IF = 283,
+     ELSE = 284,
+     ELIF = 285
    };
 #endif
 
@@ -82,7 +85,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 86 "script.tab.h"
+#line 89 "script.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

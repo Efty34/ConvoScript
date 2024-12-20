@@ -13,6 +13,9 @@ show            { return SHOW; }
 input           { return INPUT; }
 "true"          { yylval.strval = strdup(yytext); return TRUE; }
 "false"         { yylval.strval = strdup(yytext); return FALSE; }
+"if"            { return IF; }
+"else"          { return ELSE; }
+"elif"          { return ELIF; }
 [a-zA-Z_][a-zA-Z0-9_]*  { yylval.strval = strdup(yytext); return IDENTIFIER; }
 [0-9]+\.[0-9]+|[0-9]+   { yylval.strval = strdup(yytext); return NUMBER; }
 \"[^\"]*\"      { yylval.strval = strdup(yytext); return STRING; }

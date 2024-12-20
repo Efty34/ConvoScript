@@ -1,17 +1,22 @@
 === Program Analysis Started ===
 
-Show statement: sum = 52.20
-Show statement: diff = 32.20
-Show statement: product = 422.00
-Show statement: quotient = 4.22
-Show statement: isGreater = true
-Show statement: complexArith = 104.40
-Show statement: complexCond = true
-Show statement: mixedOp = true
-Show statement: message = "Hello"
+Show statement: x = 42.2
+IF block executed
+Show statement: x = 42.2
+Show statement: y = 10
+IF-ELSE block executed
+Show statement: x = 42.2
+Show statement: y = 10
+ELIF block executed
+Show statement: z = 100
+IF-ELIF-ELSE block executed
+Show statement: x = 42.2
+Show statement: y = 10
+IF-ELSE block executed
+IF block executed
 
 === Variable Declaration Summary ===
-Total variables found: 16
+Total variables found: 3
 
 Variable #1:
   Name: x
@@ -24,72 +29,7 @@ Variable #2:
   Value: 10
 
 Variable #3:
-  Name: message
-  Type: string
-  Value: "Hello"
-
-Variable #4:
-  Name: sum
+  Name: z
   Type: number
-  Value: 52.20
-
-Variable #5:
-  Name: diff
-  Type: number
-  Value: 32.20
-
-Variable #6:
-  Name: product
-  Type: number
-  Value: 422.00
-
-Variable #7:
-  Name: quotient
-  Type: number
-  Value: 4.22
-
-Variable #8:
-  Name: isGreater
-  Type: number
-  Value: true
-
-Variable #9:
-  Name: isEqual
-  Type: number
-  Value: false
-
-Variable #10:
-  Name: isNotEqual
-  Type: number
-  Value: true
-
-Variable #11:
-  Name: isLess
-  Type: number
-  Value: false
-
-Variable #12:
-  Name: isGreaterEqual
-  Type: number
-  Value: true
-
-Variable #13:
-  Name: isLessEqual
-  Type: number
-  Value: false
-
-Variable #14:
-  Name: complexArith
-  Type: number
-  Value: 104.40
-
-Variable #15:
-  Name: complexCond
-  Type: number
-  Value: true
-
-Variable #16:
-  Name: mixedOp
-  Type: number
-  Value: true
+  Value: 100
 

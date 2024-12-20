@@ -67,6 +67,7 @@ char* evaluate_condition(const char* val1, const char* val2, char* op) {
 %token MASTER DATATYPE SHOW INPUT IDENTIFIER STRING NUMBER
 %token PLUS MINUS MULTIPLY DIVIDE
 %token GT LT GE LE EQ NE TRUE FALSE
+%token IF ELSE ELIF
 
 %left PLUS MINUS
 %left MULTIPLY DIVIDE
@@ -120,6 +121,7 @@ statement:
     variable_declaration
     | show_function
     | input_function
+    | if_statement
     ;
 
 variable_declaration:
@@ -175,6 +177,33 @@ conditional_expr:
     | expr LE expr { $$ = evaluate_condition($1, $3, "<="); }
     | expr EQ expr { $$ = evaluate_condition($1, $3, "=="); }
     | expr NE expr { $$ = evaluate_condition($1, $3, "!="); }
+    ;
+
+if_statement:
+    IF LPAREN conditional_expr RPAREN LBRACE statements RBRACE
+    {
+        fprintf(outputFile, "IF block executed\n");
+    }
+    | IF LPAREN conditional_expr RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    {
+        fprintf(outputFile, "IF-ELSE block executed\n");
+    }
+    | IF LPAREN conditional_expr RPAREN LBRACE statements RBRACE elif_chains ELSE LBRACE statements RBRACE
+    {
+        fprintf(outputFile, "IF-ELIF-ELSE block executed\n");
+    }
+    ;
+
+elif_chains:
+    elif_chain
+    | elif_chains elif_chain
+    ;
+
+elif_chain:
+    ELIF LPAREN conditional_expr RPAREN LBRACE statements RBRACE
+    {
+        fprintf(outputFile, "ELIF block executed\n");
+    }
     ;
 
 show_function:

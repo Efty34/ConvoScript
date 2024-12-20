@@ -1,27 +1,27 @@
 master() {
     number x = 42.2;
     number y = 10;
-    string message = "Hello";
-    number sum = x + y;
-    number diff = x - y;
-    number product = x * y;
-    number quotient = x / y;
-    number isGreater = x > y;
-    number isEqual = x == y;
-    number isNotEqual = x != y;
-    number isLess = x < y;
-    number isGreaterEqual = x >= y;
-    number isLessEqual = x <= y;
-    number complexArith = (x + y) * 2;
-    number complexCond = (sum > 50);
-    number mixedOp = ((x + y) > (y * 2));
-    show(sum);
-    show(diff);
-    show(product);
-    show(quotient);
-    show(isGreater);
-    show(complexArith);
-    show(complexCond);
-    show(mixedOp);
-    show(message);
+    if(x > y) {
+        show(x);
+    }
+    if(x < y) {
+        show(x);
+    } else {
+        show(y);
+    }
+    if(x < 0) {
+        show(x);
+    } elif(x > 40) {
+        show(y);
+    } else {
+        number z = 100;
+        show(z);
+    }
+    if(x > y) {
+        if(y < 20) {
+            show(x);
+        } else {
+            show(y);
+        }
+    }
 }
