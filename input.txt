@@ -1,7 +1,7 @@
 master()
 {
-    number a = 3;
-    number b = 5;
+    number a = 3.3;
+    number b = 5.9;
     string s = "Hello, world!";
 
     show(a);
