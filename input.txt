@@ -1,27 +1,36 @@
-master() {
-    number x = 42.2;
-    number y = 10;
-    if(x > y) {
-        show(x);
+master()
+{
+    number a = 3;
+    number b = 5;
+    string s = "Hello, world!";
+
+    show(a);
+    show(s);
+
+    number c = a + b;
+    show(c);
+
+    if (c > b)
+    {
+        show(c);
     }
-    if(x < y) {
-        show(x);
-    } else {
-        show(y);
+    else
+    {
+        show(b);
     }
-    if(x < 0) {
-        show(x);
-    } elif(x > 40) {
-        show(y);
-    } else {
-        number z = 100;
-        show(z);
+
+    number d = c * 2;
+
+    if (d > 16)
+    {
+        show(d);
     }
-    if(x > y) {
-        if(y < 20) {
-            show(x);
-        } else {
-            show(y);
-        }
+    elif (d == 16)
+    {
+        show(d);
+    }
+    else
+    {
+        show(a);
     }
 }

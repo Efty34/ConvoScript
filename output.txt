@@ -1,35 +1,44 @@
 === Program Analysis Started ===
 
-Show statement: x = 42.2
-IF block executed
-Show statement: x = 42.2
-Show statement: y = 10
+=== Entering Master Function ===
+Show statement: a = 3
+Show statement: s = "Hello, world!"
+Show statement: c = 8.00
+Show statement: c = 8.00
+Show statement: b = 5
 IF-ELSE block executed
-Show statement: x = 42.2
-Show statement: y = 10
+Show statement: d = 16.00
+Show statement: d = 16.00
 ELIF block executed
-Show statement: z = 100
+Show statement: a = 3
 IF-ELIF-ELSE block executed
-Show statement: x = 42.2
-Show statement: y = 10
-IF-ELSE block executed
-IF block executed
+=== Exiting Master Function ===
 
 === Variable Declaration Summary ===
-Total variables found: 3
+Total variables found: 5
 
 Variable #1:
-  Name: x
+  Name: a
   Type: number
-  Value: 42.2
+  Value: 3
 
 Variable #2:
-  Name: y
+  Name: b
   Type: number
-  Value: 10
+  Value: 5
 
 Variable #3:
-  Name: z
+  Name: s
+  Type: string
+  Value: "Hello, world!"
+
+Variable #4:
+  Name: c
   Type: number
-  Value: 100
+  Value: 8.00
+
+Variable #5:
+  Name: d
+  Type: number
+  Value: 16.00
 
