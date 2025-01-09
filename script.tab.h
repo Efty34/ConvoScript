@@ -66,7 +66,11 @@
      FALSE = 282,
      IF = 283,
      ELSE = 284,
-     ELIF = 285
+     ELIF = 285,
+     LOOP = 286,
+     FROM = 287,
+     TO = 288,
+     ARROW = 289
    };
 #endif
 
@@ -85,7 +89,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 89 "script.tab.h"
+#line 93 "script.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

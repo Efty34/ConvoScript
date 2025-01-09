@@ -105,6 +105,8 @@ char* evaluate_condition(const char* val1, const char* val2, const char* op) {
 %token PLUS MINUS MULTIPLY DIVIDE
 %token GT LT GE LE EQ NE TRUE FALSE
 %token IF ELSE ELIF
+%token LOOP FROM TO ARROW
+
 
 /* Precedence and associativity rules for arithmetic operators */
 %left PLUS MINUS
@@ -118,6 +120,8 @@ char* evaluate_condition(const char* val1, const char* val2, const char* op) {
 %type <strval> variable_declaration show_function input_function
 %type <strval> expr term factor
 %type <strval> conditional_expr bool_expr
+%type <strval> loop_statement
+
 
 %%
 /* Top-level grammar */
@@ -186,6 +190,7 @@ statement:
     | show_function
     | input_function
     | if_statement
+    | loop_statement
 ;
 
 /*
@@ -290,6 +295,37 @@ elif_chain:
         fprintf(outputFile, "ELIF block executed\n");
     }
 ;
+
+loop_statement:
+    LOOP IDENTIFIER FROM expr TO expr ARROW LBRACE statements RBRACE
+    {
+        int start = atoi($4);
+        int end = atoi($6);
+        char iterator_name[128];
+        strcpy(iterator_name, $2);
+
+        // Add the iterator to the symbol table
+        char initial_value[50];
+        sprintf(initial_value, "%d", start);
+        add_symbol(symbolTable, iterator_name, "number", initial_value);
+
+        // Execute the loop
+        for (int i = start; i <= end; i++) {
+            // Update the iterator's value in the symbol table
+            char value[50];
+            sprintf(value, "%d", i);
+            update_symbol(symbolTable, iterator_name, value);
+
+            fprintf(outputFile, "Loop iteration %d: %s = %s\n", i, iterator_name, value);
+
+        }
+
+        // Remove the iterator from the symbol table
+        remove_symbol(symbolTable, iterator_name);
+    }
+;
+
+
 
 /* show_function and input_function */
 show_function:

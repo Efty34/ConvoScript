@@ -16,6 +16,10 @@ input               { return INPUT; }
 "if"                { return IF; }
 "else"              { return ELSE; }
 "elif"              { return ELIF; }
+loop                { return LOOP; }
+from                { return FROM; }
+to                  { return TO; }
+"=>"                { return ARROW; }
 [a-zA-Z_][a-zA-Z0-9_]*  {
     yylval.strval = strdup(yytext);
     return IDENTIFIER;

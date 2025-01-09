@@ -1,44 +1,19 @@
 === Program Analysis Started ===
 
 === Entering Master Function ===
-Show statement: a = 3.3
-Show statement: s = "Hello, world!"
-Show statement: c = 9.20
-Show statement: c = 9.20
-Show statement: b = 5.9
-IF-ELSE block executed
-Show statement: d = 18.40
-Show statement: d = 18.40
-ELIF block executed
-Show statement: a = 3.3
-IF-ELIF-ELSE block executed
+Show statement: Undefined variable i
+Loop iteration 1: i = 1
+Loop iteration 2: i = 2
+Loop iteration 3: i = 3
+Loop iteration 4: i = 4
+Loop iteration 5: i = 5
+Loop iteration 6: i = 6
+Loop iteration 7: i = 7
+Loop iteration 8: i = 8
+Loop iteration 9: i = 9
+Loop iteration 10: i = 10
 === Exiting Master Function ===
 
 === Variable Declaration Summary ===
-Total variables found: 5
-
-Variable #1:
-  Name: a
-  Type: number
-  Value: 3.3
-
-Variable #2:
-  Name: b
-  Type: number
-  Value: 5.9
-
-Variable #3:
-  Name: s
-  Type: string
-  Value: "Hello, world!"
-
-Variable #4:
-  Name: c
-  Type: number
-  Value: 9.20
-
-Variable #5:
-  Name: d
-  Type: number
-  Value: 18.40
+Total variables found: 0
 
