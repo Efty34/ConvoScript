@@ -1,4 +1,37 @@
 master() {
+    number a = 3.3;
+    number b = 5.9;
+    string s = "Hello, world!";
+
+    show(a);
+    show(s);
+
+    number c = a + b;
+    show(c);
+
+    if (c > b)
+    {
+        show(c);
+    }
+    else
+    {
+        show(b);
+    }
+
+    number d = c * 2;
+
+    if (d > 16)
+    {
+        show(d);
+    }
+    elif (d == 16)
+    {
+        show(d);
+    }
+    else
+    {
+        show(a);
+    }
     loop i from 1 to 10 => {	
         show(i);
     }
