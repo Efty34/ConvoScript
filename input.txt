@@ -32,8 +32,11 @@ master() {
     {
         show(a);
     }
-    loop i from 1 to 10 => {	
+    number i = 0;
+    loop i from 1 to 3 => {	
         show(i);
     }
+    number y = 10 + i;
+    show(y);
 
 }

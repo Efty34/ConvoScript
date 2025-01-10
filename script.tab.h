@@ -81,7 +81,7 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 97 "script.y"
+#line 100 "script.y"
 
     char *strval;
     int   intval;

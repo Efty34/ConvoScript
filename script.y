@@ -4,6 +4,9 @@
 #include <string.h>
 #include "symbol_table.h"
 
+SymbolTable *current_scope = NULL; 
+SymbolTable *global_scope = NULL;
+
 /*
   Extern declarations from the Flex-generated scanner:
 */
@@ -121,6 +124,8 @@ char* evaluate_condition(const char* val1, const char* val2, const char* op) {
 %type <strval> expr term factor
 %type <strval> conditional_expr bool_expr
 %type <strval> loop_statement
+%type <strval> loop_block
+%type <strval> loop_statements
 
 
 %%
@@ -129,7 +134,9 @@ char* evaluate_condition(const char* val1, const char* val2, const char* op) {
 program:
     {
         /* Initialize the symbol table, variables, etc. */
-        symbolTable = create_symbol_table();
+        global_scope = create_symbol_table();
+        current_scope = global_scope;
+        symbolTable = global_scope;
         has_master = 0;
         var_count = 0;
         fprintf(outputFile, "=== Program Analysis Started ===\n\n");
@@ -296,33 +303,73 @@ elif_chain:
     }
 ;
 
+/* Modified loop statement with proper scope handling */
 loop_statement:
-    LOOP IDENTIFIER FROM expr TO expr ARROW LBRACE statements RBRACE
+    LOOP IDENTIFIER FROM expr TO expr ARROW loop_block
     {
         int start = atoi($4);
         int end = atoi($6);
         char iterator_name[128];
         strcpy(iterator_name, $2);
-
-        // Add the iterator to the symbol table
-        char initial_value[50];
-        sprintf(initial_value, "%d", start);
-        add_symbol(symbolTable, iterator_name, "number", initial_value);
-
-        // Execute the loop
+        
+        SymbolTable *loop_scope = create_symbol_table();
+        
+        // Copy initial values to loop scope
+        for (int i = 0; i < symbolTable->size; i++) {
+            add_symbol(loop_scope, 
+                      symbolTable->symbols[i].name,
+                      symbolTable->symbols[i].type,
+                      symbolTable->symbols[i].value);
+        }
+        
+        fprintf(outputFile, "\n=== Loop Starting ===\n");
+        fprintf(outputFile, "Iterator: %s, Range: %d to %d\n", iterator_name, start, end);
+        
         for (int i = start; i <= end; i++) {
-            // Update the iterator's value in the symbol table
+            fprintf(outputFile, "\n--- Loop Iteration %d ---\n", i);
+            
+            // Update iterator in loop scope
             char value[50];
             sprintf(value, "%d", i);
-            update_symbol(symbolTable, iterator_name, value);
-
-            fprintf(outputFile, "Loop iteration %d: %s = %s\n", i, iterator_name, value);
-
+            update_symbol(loop_scope, iterator_name, value);
+            fprintf(outputFile, "Iterator %s = %d\n", iterator_name, i);
+            
+            // Execute loop body in loop scope
+            SymbolTable *temp = symbolTable;
+            symbolTable = loop_scope;
+            
+            $8;  // Execute statements
+            
+            // Update parent scope with loop scope values
+            for (int j = 0; j < loop_scope->size; j++) {
+                Symbol *loop_sym = &loop_scope->symbols[j];
+                update_symbol(temp, loop_sym->name, loop_sym->value);
+            }
+            
+            symbolTable = temp;
         }
-
-        // Remove the iterator from the symbol table
-        remove_symbol(symbolTable, iterator_name);
+        
+        // Ensure iterator's final value is in parent scope
+        char final_value[50];
+        sprintf(final_value, "%d", end);
+        update_symbol(symbolTable, iterator_name, final_value);
+        
+        free_symbol_table(loop_scope);
+        fprintf(outputFile, "\n=== Loop Completed ===\n");
     }
+;
+
+
+
+
+loop_block:
+    LBRACE loop_statements RBRACE
+    { $$ = $2; }
+;
+
+loop_statements:
+    statements
+    { $$ = strdup("loop_statements"); }  /* Just a placeholder return value */
 ;
 
 

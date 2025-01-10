@@ -12,21 +12,26 @@ Show statement: d = 18.40
 ELIF block executed
 Show statement: a = 3.3
 IF-ELIF-ELSE block executed
-Show statement: Undefined variable i
-Loop iteration 1: i = 1
-Loop iteration 2: i = 2
-Loop iteration 3: i = 3
-Loop iteration 4: i = 4
-Loop iteration 5: i = 5
-Loop iteration 6: i = 6
-Loop iteration 7: i = 7
-Loop iteration 8: i = 8
-Loop iteration 9: i = 9
-Loop iteration 10: i = 10
+Show statement: i = 0
+
+=== Loop Starting ===
+Iterator: i, Range: 1 to 3
+
+--- Loop Iteration 1 ---
+Iterator i = 1
+
+--- Loop Iteration 2 ---
+Iterator i = 2
+
+--- Loop Iteration 3 ---
+Iterator i = 3
+
+=== Loop Completed ===
+Show statement: y = 13.00
 === Exiting Master Function ===
 
 === Variable Declaration Summary ===
-Total variables found: 5
+Total variables found: 7
 
 Variable #1:
   Name: a
@@ -52,4 +57,14 @@ Variable #5:
   Name: d
   Type: number
   Value: 18.40
+
+Variable #6:
+  Name: i
+  Type: number
+  Value: 3
+
+Variable #7:
+  Name: y
+  Type: number
+  Value: 13.00
 
