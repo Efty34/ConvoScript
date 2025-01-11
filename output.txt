@@ -28,10 +28,14 @@ Iterator i = 3
 
 === Loop Completed ===
 Show statement: y = 13.00
+Show statement: calc = 15.00
+Return value: 15.00
+Function calculate declared
+Function calculate called
 === Exiting Master Function ===
 
 === Variable Declaration Summary ===
-Total variables found: 7
+Total variables found: 10
 
 Variable #1:
   Name: a
@@ -67,4 +71,19 @@ Variable #7:
   Name: y
   Type: number
   Value: 13.00
+
+Variable #8:
+  Name: p
+  Type: number
+  Value: 10
+
+Variable #9:
+  Name: q
+  Type: number
+  Value: 5
+
+Variable #10:
+  Name: calc
+  Type: number
+  Value: 15.00
 

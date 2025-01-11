@@ -20,6 +20,8 @@ loop                { return LOOP; }
 from                { return FROM; }
 to                  { return TO; }
 "=>"                { return ARROW; }
+slave               { return SLAVE; }
+return              { return RETURN; }
 [a-zA-Z_][a-zA-Z0-9_]*  {
     yylval.strval = strdup(yytext);
     return IDENTIFIER;

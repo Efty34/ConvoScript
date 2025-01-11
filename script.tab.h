@@ -70,7 +70,9 @@
      LOOP = 286,
      FROM = 287,
      TO = 288,
-     ARROW = 289
+     ARROW = 289,
+     SLAVE = 290,
+     RETURN = 291
    };
 #endif
 
@@ -89,7 +91,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 93 "script.tab.h"
+#line 95 "script.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

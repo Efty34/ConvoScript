@@ -6,12 +6,19 @@
 #include <string.h>
 #include <stdio.h>
 
+// Add to Symbol struct
+int is_function;
+char *function_body;
+
+
 // Symbol structure
 typedef struct {
     char *name;
     char *type;
     char *value;
     int scope_level;  // Add scope level tracking
+    char *function_body;
+    int is_function;
 } Symbol;
 
 // Symbol table structure
@@ -36,5 +43,8 @@ void free_symbol_table(SymbolTable *table);
 void enter_scope(SymbolTable *table);
 void exit_scope(SymbolTable *table);
 void copy_loop_values(SymbolTable *loop_scope, SymbolTable *parent_scope);
+void add_function_symbol(SymbolTable *table, const char *name, Symbol *symbols, int size, const char *body);
+char* execute_function(SymbolTable *table, const char *name);
+Symbol* get_function(SymbolTable *table, const char *name);
 
 #endif

@@ -109,6 +109,7 @@ char* evaluate_condition(const char* val1, const char* val2, const char* op) {
 %token GT LT GE LE EQ NE TRUE FALSE
 %token IF ELSE ELIF
 %token LOOP FROM TO ARROW
+%token SLAVE RETURN
 
 
 /* Precedence and associativity rules for arithmetic operators */
@@ -126,6 +127,7 @@ char* evaluate_condition(const char* val1, const char* val2, const char* op) {
 %type <strval> loop_statement
 %type <strval> loop_block
 %type <strval> loop_statements
+%type <strval> function_declaration function_call return_statement
 
 
 %%
@@ -198,6 +200,8 @@ statement:
     | input_function
     | if_statement
     | loop_statement
+    | function_declaration    
+    | function_call  
 ;
 
 /*
@@ -372,6 +376,28 @@ loop_statements:
     { $$ = strdup("loop_statements"); }  /* Just a placeholder return value */
 ;
 
+/* Function declaration and call rules */
+function_declaration:
+    SLAVE IDENTIFIER LPAREN RPAREN LBRACE statements return_statement RBRACE
+    {
+        fprintf(outputFile, "Function %s declared\n", $2);
+    }
+    ;
+
+function_call:
+    IDENTIFIER LPAREN RPAREN SEMICOLON
+    {
+        fprintf(outputFile, "Function %s called\n", $1);
+    }
+    ;
+
+return_statement:
+    RETURN expr SEMICOLON
+    {
+        $$ = $2;
+        fprintf(outputFile, "Return value: %s\n", $2);
+    }
+    ;
 
 
 /* show_function and input_function */

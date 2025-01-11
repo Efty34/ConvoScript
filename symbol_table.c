@@ -145,3 +145,29 @@ void copy_loop_values(SymbolTable *loop_scope, SymbolTable *parent_scope) {
     }
 }
 
+void add_function_symbol(SymbolTable *table, const char *name, Symbol *symbols, int size, const char *body) {
+    Symbol *sym = &table->symbols[table->size++];
+    sym->name = strdup(name);
+    sym->is_function = 1;
+    sym->function_body = strdup(body);
+}
+
+char* execute_function(SymbolTable *table, const char *name) {
+    Symbol *func = get_function(table, name);
+    if(func) {
+        SymbolTable *function_scope = create_symbol_table_with_parent(table);
+        // Execute function body here
+        return strdup("function_result");
+    }
+    return NULL;
+}
+
+Symbol* get_function(SymbolTable *table, const char *name) {
+    for(int i = 0; i < table->size; i++) {
+        if(table->symbols[i].is_function && strcmp(table->symbols[i].name, name) == 0) {
+            return &table->symbols[i];
+        }
+    }
+    return NULL;
+}
+
