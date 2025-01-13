@@ -5,7 +5,7 @@
 ## Features
 
 - [Master Function](#master-function)
-- [Show Function](#show)
+- [Show Function](#show-function)
 - [Variable (Number, String, Boolean)](#variable-number-string-boolean)
 - [Arithmetic Operations](#arithmetic-operations)
 - [Conditional Statements](#conditional-statements)
